@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphical Verilog</title>
+<style>/*@CSS@*/</style>
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <button class="narrow-only" id="toggleLeft" title="Panels">☰</button>
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h5M3 18h5M8 3v6M8 15v6" stroke="var(--accent)"/><path d="M8 4h5a8 8 0 0 1 0 16H8z"/><path d="M21 12h-0"/></svg>
+      <span>Graphical Verilog</span>
+    </div>
+    <input id="projName" type="text" title="Project name">
+    <nav class="tabs" id="tabs">
+      <button data-tab="circuit">Circuit</button>
+      <button data-tab="fsm">State machines</button>
+      <button data-tab="verilog">Verilog</button>
+    </nav>
+    <div class="spacer"></div>
+    <div class="group" id="simControls">
+      <button id="simToggle" title="Start/stop simulation (Ctrl+E)">▶ Simulate</button>
+      <button id="simReset" title="Reset all registers and state machines (R)">⟲ Reset</button>
+      <button id="simStep" title="One clock cycle (Space)">⏭ Step</button>
+      <button id="simRun" title="Run the clock continuously">⏵ Run</button>
+      <span id="cycle"></span>
+    </div>
+    <div class="group">
+      <button id="undoBtn" title="Undo (Ctrl+Z)">↶</button>
+      <button id="redoBtn" title="Redo (Ctrl+Shift+Z)">↷</button>
+    </div>
+    <div class="menu" id="fileMenu">
+      <button id="fileBtn">File ▾</button>
+      <div class="menu-list" id="fileList"></div>
+    </div>
+    <button id="settingsBtn" title="Settings">⚙</button>
+    <button class="narrow-only" id="toggleRight" title="Inspector">ⓘ</button>
+  </header>
+  <main>
+    <aside id="left"></aside>
+    <section id="center">
+      <div id="stage">
+        <svg id="circuitCanvas" class="canvas"></svg>
+        <svg id="fsmCanvas" class="canvas" style="display:none"></svg>
+        <div id="verilogView"><pre id="verilogCode"></pre></div>
+        <div id="overlay"></div>
+      </div>
+      <div id="wave">
+        <div class="bar"><b>Waveform</b><span id="waveInfo"></span><span class="spacer"></span>
+          <button id="waveZoomOut" title="Narrower cycles">−</button><button id="waveZoomIn" title="Wider cycles">+</button>
+          <button id="waveClear" title="Clear recorded history">Clear</button></div>
+        <div id="waveBody"></div>
+      </div>
+    </section>
+    <aside id="right"></aside>
+  </main>
+  <footer id="status"></footer>
+</div>
+<dialog id="settingsDlg"></dialog>
+<dialog id="askDlg" style="width:min(420px,94vw)"></dialog>
+<input type="file" id="fileInput" accept=".json,application/json" style="display:none">
+<script>/*@JS@*/</script>
+</body>
+</html>
